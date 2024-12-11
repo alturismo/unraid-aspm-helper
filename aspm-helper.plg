@@ -59,6 +59,8 @@ else
     echo "script doesn't exist."
 fi
 
+mkdir -p /boot/config/plugins/aspm-helper/autostart/
+
 /usr/local/emhttp/plugins/aspm-helper/result/prepare.sh
 
 touch /boot/config/plugins/aspm-helper/aspmhelpersettings
