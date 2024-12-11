@@ -17,7 +17,7 @@ rm /usr/local/emhttp/plugins/aspm-helper/result/lspci-t_result.txt
 
 IFS=$'\n'       # make newlines the only separator
 set -f          # disable globbing
-for i in $(cat < "lspci-t.txt"); do
+for i in $(cat < "/usr/local/emhttp/plugins/aspm-helper/result/lspci-t.txt"); do
 	checkup2=$(echo $i | cut -c 59-62)
 	checkupdot=$(echo $i | cut -c 61)
 	if [[ $checkupdot =~ "." ]]; then
@@ -35,7 +35,7 @@ for i in $(cat < "lspci-t.txt"); do
 	fi
 done
 
-for i in $(cat < "lspci-t.txt"); do
+for i in $(cat < "/usr/local/emhttp/plugins/aspm-helper/result/lspci-t.txt"); do
 	checkup2=$(echo $i | cut -c 46-49)
 	checkupdot=$(echo $i | cut -c 48)
 	if [[ $checkupdot =~ "." ]]; then
@@ -53,7 +53,7 @@ for i in $(cat < "lspci-t.txt"); do
 	fi
 done
 
-for i in $(cat < "lspci-t.txt"); do
+for i in $(cat < "/usr/local/emhttp/plugins/aspm-helper/result/lspci-t.txt"); do
 	checkup2=$(echo $i | cut -c 27-30)
 	checkupdot=$(echo $i | cut -c 29)
 	if [[ $checkupdot =~ "." ]]; then
@@ -71,7 +71,7 @@ for i in $(cat < "lspci-t.txt"); do
 	fi
 done
 
-for i in $(cat < "lspci-t.txt"); do
+for i in $(cat < "/usr/local/emhttp/plugins/aspm-helper/result/lspci-t.txt"); do
 	checkup2=$(echo $i | cut -c 30-33)
 	checkupdot=$(echo $i | cut -c 32)
 	if [[ $checkupdot =~ "." ]]; then
@@ -94,9 +94,9 @@ set -f          # disable globbing
 
 rm /usr/local/emhttp/plugins/aspm-helper/result/aspm_result.txt
 
-for i in $(cat < "lspci_result.txt"); do
+for i in $(cat < "/usr/local/emhttp/plugins/aspm-helper/result/lspci_result.txt"); do
 	disabled_device=$(echo $i | cut -c 1-7)
-	for j in $(cat < "lspci-t_result.txt"); do
+	for j in $(cat < "/usr/local/emhttp/plugins/aspm-helper/result/lspci-t_result.txt"); do
 		devicepath=$(echo $j | cut -c 1-7)
 		if [[ "$disabled_device" == "$devicepath" ]]; then
 			echo "$j" >> /usr/local/emhttp/plugins/aspm-helper/result/aspm_result.txt
