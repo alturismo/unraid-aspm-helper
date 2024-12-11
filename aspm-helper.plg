@@ -37,10 +37,6 @@ Plugin to get the proper aspm devices for changes and set on boot if wanted.
 <URL>&gitURL;/packages/&name;.txz</URL>
 </FILE>
 
-<FILE Name="&plgPATH;/&plgNAME;.txz" Run="upgradepkg --install-new">
-<URL>https://github.com/alturismo/unraid-aspm-helper/raw/refs/heads/main/packages/bc-1.07.1-x86_64-5.txz</URL>
-</FILE>
-
 <FILE Run="/bin/bash">
 <INLINE>
 
