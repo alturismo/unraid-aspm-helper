@@ -1,0 +1,84 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name      "aspm-helper">
+<!ENTITY author    "alturismo">
+<!ENTITY version   "2024.12.11">
+<!ENTITY launch    "Settings/aspm-helper">
+<!ENTITY gitURL    "https://raw.githubusercontent.com/alturismo/unraid-aspm-helper/master">
+<!ENTITY pluginURL "&gitURL;/&name;.plg">
+<!ENTITY plgPATH   "/boot/config/plugins/&name;">
+<!ENTITY plgNAME   "&name;-&version;-x86_64">
+<!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
+<!ENTITY packages  "/boot/config/plugins/&name;/packages">
+]>
+<PLUGIN name="&name;" 
+        author="&author;" 
+        version="&version;" 
+        launch="&launch;" 
+        pluginURL="&pluginURL;" 
+        min="6.11.0"
+        support="https://forums.unraid.net/topic/181843-support-alturismo-repos/">
+ 
+<CHANGES>
+###2024.12.11
+- Initial Release.
+
+</CHANGES>
+
+<FILE Name="&emhttp;/README.md">
+<INLINE>
+**ASPM Helper**
+
+Plugin to get the proper aspm devices for changes and set on boot if wanted.
+</INLINE>
+</FILE>
+
+<FILE Name="&plgPATH;/&plgNAME;.txz" Run="upgradepkg --install-new">
+<URL>&gitURL;/packages/&name;.txz</URL>
+</FILE>
+
+<FILE Name="&plgPATH;/&plgNAME;.txz" Run="upgradepkg --install-new">
+<URL>&gitURL;/packages/bc-*.txz</URL>
+</FILE>
+
+<FILE Run="/bin/bash">
+<INLINE>
+
+echo "Checking executable flags..."
+
+if [ -f /usr/local/emhttp/plugins/aspm-helper/scripts/none ]; then
+    if [ ! -x /usr/local/emhttp/plugins/aspm-helper/scripts/none ]; then
+        chmod +x /usr/local/emhttp/plugins/aspm-helper/scripts/*
+		chmod +x /usr/local/emhttp/plugins/aspm-helper/result/*
+		chmod +x /usr/local/emhttp/plugins/aspm-helper/autostart/*
+        echo "scripts are executable."
+    else
+        echo "scripts where already executable."
+    fi
+else
+    echo "script doesn't exist."
+fi
+
+/usr/local/emhttp/plugins/aspm-helper/result/prepare.sh
+
+touch /boot/config/plugins/aspm-helper/aspmhelpersettings
+
+cp /boot/config/plugins/aspm-helper/autostart/* /usr/local/emhttp/plugins/aspm-helper/autostart/
+
+sleep 1
+
+run-parts /usr/local/emhttp/plugins/aspm-helper/autostart/
+
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash" Method="remove">
+ <INLINE>
+  echo "Removing &name;..."
+  removepkg &plgPATH;/*.txz
+  rm -rf &plgPATH;
+  rm -rf &emhttp;
+  echo "&name; has been removed"
+ </INLINE>
+</FILE>
+</PLUGIN>

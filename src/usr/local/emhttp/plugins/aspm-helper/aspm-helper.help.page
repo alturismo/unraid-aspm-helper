@@ -1,0 +1,21 @@
+Menu="aspm-helper:1"
+Title="ASPM INFO & HELP"
+Tag="icon-cpu"
+---
+
+<?
+$file = "/usr/local/emhttp/plugins/aspm-helper/result/lspci.txt";
+$text = @file_get_contents($file) ?: '';
+$text = preg_replace(["/\r\n/","/\r/"],"\n",$text);
+$file2 = "/usr/local/emhttp/plugins/aspm-helper/result/lspci-t.txt";
+$text2 = @file_get_contents($file2) ?: '';
+$text2 = preg_replace(["/\r\n/","/\r/"],"\n",$text2);
+?>
+
+<div class="title"><span class="left"><i class="fa fa-hand-peace-o title"></i>ASPM INFO, lspci PRE RUN state</span></div>
+<textarea spellcheck="false" cols="120" rows="<?=substr_count($text,"\n")+1?>" maxlength="4096" name="text" style="resize:none;font-family:bitstream;width:90%" <?if ($var['fsState']=="Started"):?>disabled<?endif;?>><?=htmlspecialchars($text)?></textarea>
+
+<div class="title"><span class="left"><i class="fa fa-hand-peace-o title"></i>ASPM INFO, lspci tree</span></div>
+<textarea spellcheck="false" cols="120" rows="<?=substr_count($text2,"\n")+1?>" maxlength="4096" name="text" style="resize:none;font-family:bitstream;width:90%" <?if ($var['fsState']=="Started"):?>disabled<?endif;?>><?=htmlspecialchars($text2)?></textarea>
+
+</form>

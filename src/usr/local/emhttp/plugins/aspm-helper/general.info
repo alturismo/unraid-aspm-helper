@@ -1,0 +1,7 @@
+----------------------------------------------------
+already enabled Devices are not shown as found
+----------------------------------------------------
+for changing as sample to a higher aspm mode,
+please look for your Device ID and Root Complex ID
+which fits together.
+----------------------------------------------------

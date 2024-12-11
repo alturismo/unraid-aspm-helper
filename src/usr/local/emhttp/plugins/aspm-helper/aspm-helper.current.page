@@ -1,0 +1,21 @@
+Menu="aspm-helper:2"
+Title="ASPM CURRENT"
+Tag="icon-cpu"
+---
+
+<?
+$file = "/usr/local/emhttp/plugins/aspm-helper/result/aspm_current.txt";
+$text = @file_get_contents($file) ?: '';
+$text = preg_replace(["/\r\n/","/\r/"],"\n",$text);
+$file3 = "/usr/local/emhttp/plugins/aspm-helper/general.info";
+$text3 = @file_get_contents($file3) ?: '';
+$text3 = preg_replace(["/\r\n/","/\r/"],"\n",$text3);
+?>
+
+<div class="title"><span class="left"><i class="fa fa-hand-peace-o title"></i>ASPM CURRENT State</span></div>
+<textarea spellcheck="false" cols="120" rows="<?=substr_count($text,"\n")+1?>" maxlength="4096" name="text" style="resize:none;font-family:bitstream;width:90%" <?if ($var['fsState']=="Started"):?>disabled<?endif;?>><?=htmlspecialchars($text)?></textarea>
+
+<div class="title"><span class="left"><i class="fa fa-hand-peace-o title"></i>ASPM INFO, alternative enabling devices</span></div>
+<textarea spellcheck="false" cols="120" rows="<?=substr_count($text3,"\n")+1?>" maxlength="4096" name="text" style="resize:none;font-family:bitstream;width:90%" <?if ($var['fsState']=="Started"):?>disabled<?endif;?>><?=htmlspecialchars($text3)?></textarea>
+
+</form>

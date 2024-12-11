@@ -1,0 +1,6 @@
+Mode Meaning
+-------------------------
+0    L0 only
+1    L0s only
+2    L1 only
+3    L1 and L0s
