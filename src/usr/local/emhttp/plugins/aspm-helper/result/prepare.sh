@@ -5,9 +5,9 @@ touch /usr/local/emhttp/plugins/aspm-helper/result/aspm_result.txt
 
 lspci -vv | awk '/ASPM/{print $0}' RS= | grep -P '(^[a-z0-9:.]+|ASPM |Disabled;|Enabled;)' > /usr/local/emhttp/plugins/aspm-helper/result/lspci.txt
 
-cat lspci.txt | grep .*:.*:.* | cut -f1 -d' ' | grep '[0-9]\{1\}' > /usr/local/emhttp/plugins/aspm-helper/result/testdevices.txt
-cat lspci.txt | grep -ohn "[[:alpha:]]*abled[[:alpha:]]*" | awk -i inplace '!seen[$0]++' > /usr/local/emhttp/plugins/aspm-helper/result/teststate.txt
-paste -d\; testdevices.txt teststate.txt | grep -i "Disabled" > /usr/local/emhttp/plugins/aspm-helper/result/lspci_result.txt
+cat /usr/local/emhttp/plugins/aspm-helper/result/lspci.txt | grep .*:.*:.* | cut -f1 -d' ' | grep '[0-9]\{1\}' > /usr/local/emhttp/plugins/aspm-helper/result/testdevices.txt
+cat /usr/local/emhttp/plugins/aspm-helper/result/lspci.txt | grep -ohn "[[:alpha:]]*abled[[:alpha:]]*" | awk -i inplace '!seen[$0]++' > /usr/local/emhttp/plugins/aspm-helper/result/teststate.txt
+paste -d\; /usr/local/emhttp/plugins/aspm-helper/result/testdevices.txt /usr/local/emhttp/plugins/aspm-helper/result/teststate.txt | grep -i "Disabled" > /usr/local/emhttp/plugins/aspm-helper/result/lspci_result.txt
 rm /usr/local/emhttp/plugins/aspm-helper/result/testdevices.txt
 rm /usr/local/emhttp/plugins/aspm-helper/result/teststate.txt
 
