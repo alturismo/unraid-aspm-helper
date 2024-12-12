@@ -63,7 +63,11 @@ mkdir -p /boot/config/plugins/aspm-helper/autostart/
 
 /usr/local/emhttp/plugins/aspm-helper/result/prepare.sh
 
-touch /boot/config/plugins/aspm-helper/aspmhelpersettings
+if [ ! -z /boot/config/plugins/aspm-helper/aspmhelpersettings ]; then
+
+	cp /usr/local/emhttp/plugins/aspm-helper/defaultsettings /boot/config/plugins/aspm-helper/aspmhelpersettings
+
+fi
 
 cp /boot/config/plugins/aspm-helper/autostart/* /usr/local/emhttp/plugins/aspm-helper/autostart/
 
