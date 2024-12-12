@@ -102,7 +102,7 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
 <input type="hidden" id="command" name="#command" value="" />
 
 
-<div class="title"><span class="left"><i class="fa fa-hand-peace-o title"></i>HDD FAN Setup</span></div>
+<div class="title"><span class="left"><i class="fa fa-hand-peace-o title"></i>ASPM Changes Setup</span></div>
 
 <input type="button" value="ASPM 1">
 : <input type="text" name="aspm_1_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_1_head;?>" placeholder="DEVICE" >
