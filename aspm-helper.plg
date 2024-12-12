@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "aspm-helper">
 <!ENTITY author    "alturismo">
-<!ENTITY version   "2024.12.11">
+<!ENTITY version   "2024.12.12">
 <!ENTITY launch    "Settings/aspm-helper">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/alturismo/unraid-aspm-helper/master">
 <!ENTITY pluginURL "&gitURL;/&name;.plg">
@@ -20,6 +20,9 @@
         support="https://forums.unraid.net/topic/181843-support-alturismo-repos/">
  
 <CHANGES>
+###2024.12.11
+- reboot bug fix.
+
 ###2024.12.11
 - Initial Release.
 
