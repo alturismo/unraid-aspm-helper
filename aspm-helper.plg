@@ -70,7 +70,7 @@ mkdir -p /boot/config/plugins/aspm-helper/autostart/
 
 /usr/local/emhttp/plugins/aspm-helper/result/prepare.sh
 
-if [ -z /boot/config/plugins/aspm-helper/aspmhelpersettings ]; then
+if [ ! -f /boot/config/plugins/aspm-helper/aspmhelpersettings ]; then
 	echo "copy default settings file"
 	cp /usr/local/emhttp/plugins/aspm-helper/defaultsettings /boot/config/plugins/aspm-helper/aspmhelpersettings
 else
