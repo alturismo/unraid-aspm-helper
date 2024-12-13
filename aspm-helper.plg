@@ -36,6 +36,10 @@
 <URL>&gitURL;/packages/&name;.txz</URL>
 </FILE>
 
+<FILE Name="&plgPATH;/bc-1.07.1-x86_64-5.txz" Run="upgradepkg --install-new">
+<URL>&gitURL;/packages/bc-1.07.1-x86_64-5.txz</URL>
+</FILE>
+
 <FILE Name="&emhttp;/README.md">
  <INLINE>
   **ASPM Helper**
@@ -46,12 +50,6 @@
 
 <FILE Run="/bin/bash">
 <INLINE>
-
-echo "downloading bc install package"
-curl -O https://github.com/alturismo/unraid-aspm-helper/raw/refs/heads/main/packages/bc-1.07.1-x86_64-5.txz /boot/config/plugins/aspm-helper
-
-echo "bc installing package"
-installpkg /boot/config/plugins/aspm-helper/bc-1.07.1-x86_64-5.txz
 
 echo "Checking executable flags..."
 
