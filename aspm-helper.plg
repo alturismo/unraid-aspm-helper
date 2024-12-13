@@ -47,17 +47,11 @@
 <FILE Run="/bin/bash">
 <INLINE>
 
-if [ ! -f /boot/config/plugins/aspm-helper/bc-1.07.1-x86_64-5.txz ]; then
-	echo "downloading bc install package"
-	curl -O https://github.com/alturismo/unraid-aspm-helper/raw/refs/heads/main/packages/bc-1.07.1-x86_64-5.txz /boot/config/plugins/aspm-helper
-else
-	echo "bc install package is already here"
-fi
+echo "downloading bc install package"
+curl -O https://github.com/alturismo/unraid-aspm-helper/raw/refs/heads/main/packages/bc-1.07.1-x86_64-5.txz /boot/config/plugins/aspm-helper
 
-if [ -f /boot/config/plugins/aspm-helper/bc-1.07.1-x86_64-5.txz ]; then
-	echo "bc installing package"
-	installpkg /boot/config/plugins/aspm-helper/bc-1.07.1-x86_64-5.txz
-fi
+echo "bc installing package"
+installpkg /boot/config/plugins/aspm-helper/bc-1.07.1-x86_64-5.txz
 
 echo "Checking executable flags..."
 
