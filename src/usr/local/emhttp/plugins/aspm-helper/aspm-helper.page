@@ -2,6 +2,7 @@ Menu="Utilities"
 Type="xmenu"
 Title="ASPM-HELPER"
 Icon="aspm-helper.png"
+Tag="icon-cpu"
 Tabs="true"
 ---
 
@@ -12,6 +13,7 @@ $text = preg_replace(["/\r\n/","/\r/"],"\n",$text);
 $file2 = "/usr/local/emhttp/plugins/aspm-helper/aspm-helper.info";
 $text2 = @file_get_contents($file2) ?: '';
 $text2 = preg_replace(["/\r\n/","/\r/"],"\n",$text2);
+shell_exec("/usr/local/emhttp/plugins/aspm-helper/scripts/aspm_logs.sh");
 ?>
 
 <?php
