@@ -21,6 +21,6 @@ sed -i 's/^aspm_3_state=.*/aspm_3_state="AUTOSTART IS ON"/' /boot/config/plugins
 
 cp /usr/local/emhttp/plugins/aspm-helper/scripts/aspm3.sh /usr/local/emhttp/plugins/aspm-helper/autostart/aspm3.sh
 chmod +x /usr/local/emhttp/plugins/aspm-helper/autostart/aspm3.sh
-cp /usr/local/emhttp/plugins/aspm-helper/scripts/aspm5.sh /boot/config/plugins/aspm-helper/autostart/aspm3.sh
+cp /usr/local/emhttp/plugins/aspm-helper/scripts/aspm3.sh /boot/config/plugins/aspm-helper/autostart/aspm3.sh
 
 echo "ASPM 3 Autostart enabled"

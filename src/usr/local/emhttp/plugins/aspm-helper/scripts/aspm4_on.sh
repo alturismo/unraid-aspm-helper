@@ -21,6 +21,6 @@ sed -i 's/^aspm_4_state=.*/aspm_4_state="AUTOSTART IS ON"/' /boot/config/plugins
 
 cp /usr/local/emhttp/plugins/aspm-helper/scripts/aspm4.sh /usr/local/emhttp/plugins/aspm-helper/autostart/aspm4.sh
 chmod +x /usr/local/emhttp/plugins/aspm-helper/autostart/aspm4.sh
-cp /usr/local/emhttp/plugins/aspm-helper/scripts/aspm5.sh /boot/config/plugins/aspm-helper/autostart/aspm4.sh
+cp /usr/local/emhttp/plugins/aspm-helper/scripts/aspm4.sh /boot/config/plugins/aspm-helper/autostart/aspm4.sh
 
 echo "ASPM 4 Autostart enabled"
