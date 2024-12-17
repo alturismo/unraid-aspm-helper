@@ -99,6 +99,7 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
     }
 </script>
 
+
 <form markdown="1" id="form" method="POST" action="/update.php" target="progressFrame">
 <input type="hidden" id="file" name="#file" value="/boot/config/plugins/aspm-helper/aspmhelpersettings" />
 <input type="hidden" id="command" name="#command" value="" />
@@ -106,8 +107,9 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
 
 <div class="title"><span class="left"><i class="fa fa-hand-peace-o title"></i>ASPM Changes Setup</span></div>
 
+<div style="text-align: center;">
 <input type="button" value="ASPM 1">
-: <input type="text" name="aspm_1_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_1_head;?>" placeholder="DEVICE" >
+<input type="text" name="aspm_1_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_1_head;?>" placeholder="DEVICE" >
 <input type="text" name="aspm_1_root" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_1_root;?>" placeholder="ROOT" >
 <input type="text" name="aspm_1_mode" class="narrow" maxlength="1" value="<?=$aspmhelpersetup_aspm_1_mode;?>" placeholder="MODE" >
 <input type="button" value="Execute" onClick="send('execute_aspm_1')">
@@ -118,8 +120,10 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
         <p>insert Device ID like 01:00.0, Root Complex ID like 00:1c.0, ASPM Mode like 2, see found disabled aspm devices, also see INFO & HELP Section to see all devices and tree</p>
 		<p>EXECUTE will run only once, AUTOSTART ON will run on every reboot</p>
     </blockquote>
+</div>
+<div style="text-align: center;">
 <input type="button" value="ASPM 2">
-: <input type="text" name="aspm_2_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_2_head;?>" placeholder="DEVICE" >
+<input type="text" name="aspm_2_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_2_head;?>" placeholder="DEVICE" >
 <input type="text" name="aspm_2_root" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_2_root;?>" placeholder="ROOT" >
 <input type="text" name="aspm_2_mode" class="narrow" maxlength="1" value="<?=$aspmhelpersetup_aspm_2_mode;?>" placeholder="MODE" >
 <input type="button" value="Execute" onClick="send('execute_aspm_2')">
@@ -130,8 +134,10 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
         <p>insert Device ID like 01:00.0, Root Complex ID like 00:1c.0, ASPM Mode like 2, see found disabled aspm devices, also see INFO & HELP Section to see all devices and tree</p>
 		<p>EXECUTE will run only once, AUTOSTART ON will run on every reboot</p>
     </blockquote>
+</div>
+<div style="text-align: center;">
 <input type="button" value="ASPM 3">
-: <input type="text" name="aspm_3_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_3_head;?>" placeholder="DEVICE" >
+<input type="text" name="aspm_3_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_3_head;?>" placeholder="DEVICE" >
 <input type="text" name="aspm_3_root" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_3_root;?>" placeholder="ROOT" >
 <input type="text" name="aspm_3_mode" class="narrow" maxlength="1" value="<?=$aspmhelpersetup_aspm_3_mode;?>" placeholder="MODE" >
 <input type="button" value="Execute" onClick="send('execute_aspm_3')">
@@ -142,8 +148,10 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
         <p>insert Device ID like 01:00.0, Root Complex ID like 00:1c.0, ASPM Mode like 2, see found disabled aspm devices, also see INFO & HELP Section to see all devices and tree</p>
 		<p>EXECUTE will run only once, AUTOSTART ON will run on every reboot</p>
     </blockquote>
+</div>
+<div style="text-align: center;">
 <input type="button" value="ASPM 4">
-: <input type="text" name="aspm_4_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_4_head;?>" placeholder="DEVICE" >
+<input type="text" name="aspm_4_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_4_head;?>" placeholder="DEVICE" >
 <input type="text" name="aspm_4_root" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_4_root;?>" placeholder="ROOT" >
 <input type="text" name="aspm_4_mode" class="narrow" maxlength="1" value="<?=$aspmhelpersetup_aspm_4_mode;?>" placeholder="MODE" >
 <input type="button" value="Execute" onClick="send('execute_aspm_4')">
@@ -154,8 +162,10 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
         <p>insert Device ID like 01:00.0, Root Complex ID like 00:1c.0, ASPM Mode like 2, see found disabled aspm devices, also see INFO & HELP Section to see all devices and tree</p>
 		<p>EXECUTE will run only once, AUTOSTART ON will run on every reboot</p>
     </blockquote>
+</div>
+<div style="text-align: center;">
 <input type="button" value="ASPM 5">
-: <input type="text" name="aspm_5_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_5_head;?>" placeholder="DEVICE" >
+<input type="text" name="aspm_5_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_5_head;?>" placeholder="DEVICE" >
 <input type="text" name="aspm_5_root" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_5_root;?>" placeholder="ROOT" >
 <input type="text" name="aspm_5_mode" class="narrow" maxlength="1" value="<?=$aspmhelpersetup_aspm_5_mode;?>" placeholder="MODE" >
 <input type="button" value="Execute" onClick="send('execute_aspm_5')">
@@ -166,8 +176,10 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
         <p>insert Device ID like 01:00.0, Root Complex ID like 00:1c.0, ASPM Mode like 2, see found disabled aspm devices, also see INFO & HELP Section to see all devices and tree</p>
 		<p>EXECUTE will run only once, AUTOSTART ON will run on every reboot</p>
     </blockquote>
+</div>
+<div style="text-align: center;">
 <input type="button" value="ASPM 6">
-: <input type="text" name="aspm_6_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_6_head;?>" placeholder="DEVICE" >
+<input type="text" name="aspm_6_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_6_head;?>" placeholder="DEVICE" >
 <input type="text" name="aspm_6_root" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_6_root;?>" placeholder="ROOT" >
 <input type="text" name="aspm_6_mode" class="narrow" maxlength="1" value="<?=$aspmhelpersetup_aspm_6_mode;?>" placeholder="MODE" >
 <input type="button" value="Execute" onClick="send('execute_aspm_6')">
@@ -178,8 +190,10 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
         <p>insert Device ID like 01:00.0, Root Complex ID like 00:1c.0, ASPM Mode like 2, see found disabled aspm devices, also see INFO & HELP Section to see all devices and tree</p>
 		<p>EXECUTE will run only once, AUTOSTART ON will run on every reboot</p>
     </blockquote>
+</div>
+<div style="text-align: center;">
 <input type="button" value="ASPM 7">
-: <input type="text" name="aspm_7_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_7_head;?>" placeholder="DEVICE" >
+<input type="text" name="aspm_7_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_7_head;?>" placeholder="DEVICE" >
 <input type="text" name="aspm_7_root" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_7_root;?>" placeholder="ROOT" >
 <input type="text" name="aspm_7_mode" class="narrow" maxlength="1" value="<?=$aspmhelpersetup_aspm_7_mode;?>" placeholder="MODE" >
 <input type="button" value="Execute" onClick="send('execute_aspm_7')">
@@ -190,6 +204,7 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
         <p>insert Device ID like 01:00.0, Root Complex ID like 00:1c.0, ASPM Mode like 2, see found disabled aspm devices, also see INFO & HELP Section to see all devices and tree</p>
 		<p>EXECUTE will run only once, AUTOSTART ON will run on every reboot</p>
     </blockquote>
+</div>
 
 
 <div style="text-align: center;">
