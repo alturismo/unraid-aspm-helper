@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "aspm-helper">
 <!ENTITY author    "alturismo">
-<!ENTITY version   "2024.12.17a">
+<!ENTITY version   "2024.12.18">
 <!ENTITY launch    "Settings/aspm-helper">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/alturismo/unraid-aspm-helper/master">
 <!ENTITY pluginURL "&gitURL;/&name;.plg">
@@ -20,6 +20,9 @@
         support="https://forums.unraid.net/topic/181843-support-alturismo-repos/">
  
 <CHANGES>
+###2024.12.18
+- fixed log fetching (less spam)
+
 ###2024.12.17a
 - cosmetical helper page update (keep centered)
 
@@ -96,6 +99,8 @@ chmod +x /usr/local/emhttp/plugins/aspm-helper/autostart/*
 run-parts /usr/local/emhttp/plugins/aspm-helper/autostart/
 
 lspci -vv | awk '/ASPM/{print $0}' RS= | grep --color -P '(^[a-z0-9:.]+|ASPM |Disabled;|Enabled;)' > /usr/local/emhttp/plugins/aspm-helper/result/aspm_current.txt
+
+touch /usr/local/emhttp/plugins/aspm-helper/aspm_log.txt
 
 </INLINE>
 </FILE>
