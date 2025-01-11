@@ -235,7 +235,6 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
 		<p>EXECUTE will run only once, AUTOSTART ON will run on every reboot</p>
     </blockquote>
 </div>
-</div>
 <div style="text-align: center;">
 <input type="button" value="ASPM 8">
 <input type="text" name="aspm_8_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_8_head;?>" placeholder="DEVICE" >
@@ -250,7 +249,6 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
 		<p>EXECUTE will run only once, AUTOSTART ON will run on every reboot</p>
     </blockquote>
 </div>
-</div>
 <div style="text-align: center;">
 <input type="button" value="ASPM 9">
 <input type="text" name="aspm_9_head" class="narrow" maxlength="7" value="<?=$aspmhelpersetup_aspm_9_head;?>" placeholder="DEVICE" >
@@ -264,7 +262,6 @@ $aspmhelpersetup_syslog        = isset($aspmhelpersetup['syslog']) ? $aspmhelper
         <p>insert Device ID like 01:00.0, Root Complex ID like 00:1c.0, ASPM Mode like 2, see found disabled aspm devices, also see INFO & HELP Section to see all devices and tree</p>
 		<p>EXECUTE will run only once, AUTOSTART ON will run on every reboot</p>
     </blockquote>
-</div>
 </div>
 <div style="text-align: center;">
 <input type="button" value="ASPM 10">
