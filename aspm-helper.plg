@@ -50,10 +50,12 @@
 
 <FILE Name="&plgPATH;/&plgNAME;.txz" Run="upgradepkg --install-new">
 <URL>&gitURL;/packages/&name;.txz</URL>
+<SHA256>dc6ab538b761de500b75fb6cb1afc87aea5458a4da650ecdabb0a9e42398ea67</SHA256>
 </FILE>
 
 <FILE Name="&plgPATH;/bc-1.07.1-x86_64-5.txz" Run="upgradepkg --install-new">
 <URL>&gitURL;/packages/bc-1.07.1-x86_64-5.txz</URL>
+<SHA256>e1871ce56270260b5ed15f7b7165299cdf22f2e26ab582d647019c14a53499a1</SHA256>
 </FILE>
 
 <FILE Name="&emhttp;/README.md">
