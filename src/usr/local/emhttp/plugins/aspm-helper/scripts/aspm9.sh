@@ -52,7 +52,7 @@ MAX_SEARCH=30
 SEARCH_COUNT=1
 ASPM_BYTE_ADDRESS="INVALID"
 
-ROOT_PRESENT=$(lspci | grep -c "$ROOT_COMPLEXT")
+ROOT_PRESENT=$(lspci | grep -c "$ROOT_COMPLEX")
 ENDPOINT_PRESENT=$(lspci | grep -c "$ENDPOINT")
 
 if [[ $(id -u) != 0 ]]; then
