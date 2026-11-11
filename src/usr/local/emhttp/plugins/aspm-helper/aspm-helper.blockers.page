@@ -1,0 +1,100 @@
+Menu="aspm-helper:4"
+Title="POSSIBLE BLOCKERS"
+Tag="icon-cpu"
+---
+
+<?
+// Read only: the script runs lspci and reads sysfs, nothing here writes PCIe config.
+// A saved "lspci -vv" output placed at $blk_input is shown instead of the live devices
+// (for example one from a diagnostics zip); a note above the tables says so.
+$blk_script = "/usr/local/emhttp/plugins/aspm-helper/result/blockers.sh";
+$blk_input  = "/usr/local/emhttp/plugins/aspm-helper/result/blockers_input.txt";
+$blk_cmd    = escapeshellarg($blk_script);
+$blk_saved  = is_file($blk_input);
+if ($blk_saved) $blk_cmd .= " ".escapeshellarg($blk_input);
+$blk_out = []; $blk_rc = 0;
+exec("$blk_cmd 2>/dev/null", $blk_out, $blk_rc);
+
+$blk_rows = ['A' => [], 'B' => []];
+foreach ($blk_out as $line) {
+	$f = explode("\t", $line);
+	if (count($f) < 8 || !isset($blk_rows[$f[0]])) continue;
+	$blk_rows[$f[0]][] = $f;
+}
+
+function blk_e($s) { return htmlspecialchars($s, ENT_QUOTES); }
+function blk_offers($cap) {
+	switch ($cap) {
+		case 'not supported': return 'No ASPM';
+		case 'L0s':           return 'L0s only';
+		case 'L1':            return 'L1';
+		case 'L0s L1':        return 'L0s and L1';
+		default:              return $cap;
+	}
+}
+function blk_state($ctl) {
+	if ($ctl === '') return 'unknown';
+	if ($ctl === 'Disabled') return 'ASPM off';
+	return preg_replace('/ Enabled$/', ' on', $ctl);
+}
+function blk_port($f) {
+	if ($f[5] === '') return 'none listed';
+	$s = '<span class="blk-bdf">'.blk_e($f[5]).'</span>';
+	if ($f[6] !== '') $s .= '<br><span class="blk-dim">offers '.blk_e(blk_offers($f[6])).', '.blk_e(blk_state($f[7])).'</span>';
+	return $s;
+}
+$blk_note = [
+	'A' => "Offers L0s only (no L1). Cards like this, such as LSI SAS HBAs, commonly behave this way; nothing is misconfigured and no setting here can add L1.",
+	'N' => "Offers no ASPM at all (no L1). Cards like this, such as LSI SAS HBAs, commonly behave this way; nothing is misconfigured and no setting here can add L1.",
+	'B' => "Supports L1 but it is off. The device's driver may turn it off on purpose for stability (example: Realtek network cards). Turning it on in the ASPM Helper tab is an experiment; if you see link errors or dropped connections, turn it off again.",
+];
+$blk_head = [
+	'A' => "Does not offer L1",
+	'B' => "Offers L1, but it is off",
+];
+?>
+
+<style>
+table.blk{width:100%;table-layout:fixed!important;border-collapse:collapse;margin:0 0 20px 0}
+table.blk thead td{font-weight:bold}
+table.blk td{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;vertical-align:top;padding:6px 10px;border-bottom:1px solid var(--table-border-color,rgba(128,128,128,0.35))}
+.blk-dim{opacity:0.75;font-size:0.95em}
+.blk-bdf{font-family:bitstream,monospace}
+p.blk-text{max-width:1100px;line-height:1.5em;margin:6px 0 14px 0}
+p.blk-saved{border-left:4px solid #f0a000;padding-left:10px}
+</style>
+
+<div class="title"><span class="left"><i class="fa fa-hand-peace-o title"></i>Devices that can keep the CPU out of deep idle states</span></div>
+
+<p class="blk-text">A CPU can only reach its deepest idle states when every PCIe link it feeds can sleep, which needs ASPM L1 on the device and on the port above it. Devices listed here cannot, or currently do not. This is a possible cause of higher idle power, not a fault; many servers are fine with it.</p>
+
+<?if ($blk_saved):?>
+<p class="blk-text blk-saved">Showing a saved lspci output (<?=blk_e($blk_input)?>), not the live devices of this server. Delete that file to see the live devices again.</p>
+<?endif;?>
+
+<?if ($blk_rc != 0):?>
+<p class="blk-text">The device list could not be read (lspci failed), so nothing can be shown.</p>
+<?elseif (!$blk_rows['A'] && !$blk_rows['B']):?>
+<p class="blk-text">Nothing found: every PCIe device that reports a link either has ASPM L1 on or is a bridge. Devices without a PCIe link (built into the chipset or virtual) are not checked.</p>
+<?else:?>
+<?foreach (['A','B'] as $g): if (!$blk_rows[$g]) continue;?>
+<p class="blk-text"><strong><?=blk_e($blk_head[$g])?></strong></p>
+<table class="unraid blk">
+<colgroup><col style="width:28%"><col style="width:11%"><col style="width:9%"><col style="width:12%"><col style="width:40%"></colgroup>
+<thead><tr><td>Device</td><td>What it offers</td><td>State now</td><td>Port above</td><td>Note</td></tr></thead>
+<tbody>
+<?foreach ($blk_rows[$g] as $f):?>
+<tr>
+<td><span class="blk-bdf"><?=blk_e($f[1])?></span><br><?=blk_e($f[2])?></td>
+<td><?=blk_e(blk_offers($f[3]))?></td>
+<td><?=blk_e(blk_state($f[4]))?></td>
+<td><?=blk_port($f)?></td>
+<td><?=blk_e($g == 'A' && $f[3] == 'not supported' ? $blk_note['N'] : $blk_note[$g])?></td>
+</tr>
+<?endforeach;?>
+</tbody>
+</table>
+<?endforeach;?>
+<?endif;?>
+
+<p class="blk-text blk-dim">Forcing ASPM, including the kernel option pcie_aspm=force, is a risk (frozen devices, dropped links), not a fix. Check the BIOS first (PCIe ASPM, Native ASPM). On Intel, powertop or CoreFreq can show package C-states before and after a change. On AMD Ryzen and EPYC, Linux cannot show package C-state residency, so this page cannot tell whether a device keeps the CPU out of deep idle there; compare power at the wall with and without the card (10 minutes idle each, disks spun down). ASPM still lowers the link's own power on devices that support it.</p>
